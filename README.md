@@ -15,7 +15,7 @@ In the spirit of reproducible research, this package is intended to contain the 
 The entire code is released under the GPL License. Please view the LICENSE.md file for the same. 
 
 =================================================================================================
-The release contains the following:
+OUTLINE OF THE MAJOR CONTENTS :: 
 
 (1) Files for part estimation using Poselets and FMP (Flexible Mixture of Parts) - For the full model, you will require to use both of them. Thus, following citations should be added:
 
@@ -81,7 +81,7 @@ publisher={Oxford Univ Press}
 (6) Files for Tracking of Ambiguity Resolved Parts using the flow information. Visualization of the tracked parts can also be done. The file for computing Histogram of Oriented Gradients is also available. All these files make the computation of final descriptors fairly straightforward.
 
 =================================================================================================
-RUNNING THE CODE
+RUNNING THE CODE :: 
 
 (a) The code is for MATLAB. We used the 2014a version to run it. 
 (b) Standard compiler dependencies are there for running the FMP Code. 
@@ -91,7 +91,7 @@ RUNNING THE CODE
 (f) One might get errors owing to the getFiles function dependent on the platform one is running on. There are subtle differences for Mac, Windows and Linux. Please make changes in the first line of the file accordingly.
 
 =================================================================================================
-THINGS BEING WORKED ON 
+THINGS BEING WORKED UPON ::  
 
 
 (A) MORE CONFIGURATION VARIABLES - The code currently runs both the optical flow and streak flow for the videos. The future releases shall contain a configuration variable which can help to decide whether to do only optical flow, only streak flow, or both.
