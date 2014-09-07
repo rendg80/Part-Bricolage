@@ -78,6 +78,7 @@ publisher={Oxford Univ Press}
 (6) Files for Tracking of Ambiguity Resolved Parts using the flow information. Visualization of the tracked parts can also be done. The file for computing Histogram of Oriented Gradients is also available. All these files make the computation of final descriptors fairly straightforward.
 
 ================ RUNNING THE CODE ===================
+
 (a) The code is for MATLAB. We used the 2014a version to run it. 
 (b) Standard compiler dependencies are there for running the FMP Code. 
 (c) The graph optimization package is to be run on Linux. 
@@ -85,9 +86,9 @@ publisher={Oxford Univ Press}
 (e) The paths to the datasets and the other relative paths should also be clear from main.m. 
 (f) One might get errors owing to the getFiles function dependent on the platform one is running on. There are subtle differences for Mac, Windows and Linux. Please make changes in the first line of the file accordingly.
 
-........................................................................................................................
-THINGS CURRENTLY BEING WORKED ON WHICH SHALL BE MADE AVAILABLE IN FUTURE RELEASES
-........................................................................................................................
+.........................................
+THINGS CURRENTLY BEING WORKED ON 
+.........................................
 
 (A) MORE CONFIGURATION VARIABLES - The code currently runs both the optical flow and streak flow for the videos. The future releases shall contain a configuration variable which can help to decide whether to do only optical flow, only streak flow, or both.
 
