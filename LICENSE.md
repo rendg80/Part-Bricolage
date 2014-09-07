@@ -1,6 +1,6 @@
-    --------------------------------------------------------------------
-    Part-Bricolage  Copyright (C) 2014  Sukrit Shankar, Roberto Cipolla
-    --------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------
+    Part-Bricolage  Copyright (C) 2014  Sukrit Shankar, Vijay Badrinarayanan, Roberto Cipolla
+    ------------------------------------------------------------------------------------------
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
