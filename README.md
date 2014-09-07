@@ -19,16 +19,15 @@ The entire code is released under the GPL License. Please view the LICENSE.md fi
 
 (1) Files for part estimation using Poselets and FMP (Flexible Mixture of Parts) - For the full model, you will require to use both of them. Thus, following citations should be added:
 
-'''
-@inproceedings{bourdev2009poselets,
-title={Poselets: Body part detectors trained using 3d human pose annotations},
-author={Bourdev, Lubomir and Malik, Jitendra},
-booktitle={Computer Vision, 2009 IEEE 12th International Conference on},
-pages={1365--1372},
-year={2009},
-organization={IEEE}
-}
-'''
+
+    @inproceedings{bourdev2009poselets,
+    title={Poselets: Body part detectors trained using 3d human pose annotations},
+    author={Bourdev, Lubomir and Malik, Jitendra},
+    booktitle={Computer Vision, 2009 IEEE 12th International Conference on},
+    pages={1365--1372},
+    year={2009},
+    organization={IEEE}
+    }
 
 @inproceedings{yang2011articulated,
 title={Articulated pose estimation with flexible mixtures-of-parts},
