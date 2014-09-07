@@ -12,7 +12,7 @@ In the spirit of reproducible research, this package is intended to contain the 
   publisher={Springer}
 }
 
-The code is released under the GPL License. Please view the LICENSE.md file for the same. 
+The code also makes use of the packages from other sources. Apposite referencing instructions for the same are given with the release details. The entire code is released under the GPL License. Please view the LICENSE.md file for the same. 
  
 ---------------------------------------------------------------------------------------------------------------------------
 In case of any queries, please feel free to email ss965@cam.ac.uk or sukritshankar@gmail.com.  We shall strive our best to make the software amenable and useful for your cause. 
