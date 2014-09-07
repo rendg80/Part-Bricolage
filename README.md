@@ -88,7 +88,7 @@ Note that the poselets code has been modified to make the threshold adaptive. Th
 (b) Standard compiler dependencies are there for running the FMP Code. 
 (c) The graph optimization package is to be run on Linux. 
 (d) The main.m file should give a clear indication of the code flow. 
-(e) The paths to the datasets and the other relative paths should also be clear from main.m. 
+(e) The paths to the datasets and the other relative paths should also be clear from main.m.
 (f) One might get errors owing to the getFiles function dependent on the platform one is running on. There are subtle differences for Mac, Windows and Linux. Please make changes in the first line of the file accordingly.
 
 =================================================================================================
