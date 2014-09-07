@@ -80,7 +80,8 @@ publisher={Oxford Univ Press}
 
 (6) Files for Tracking of Ambiguity Resolved Parts using the flow information. Visualization of the tracked parts can also be done. The file for computing Histogram of Oriented Gradients is also available. All these files make the computation of final descriptors fairly straightforward.
 
-================ RUNNING THE CODE ===================
+=================================================================================================
+RUNNING THE CODE
 
 (a) The code is for MATLAB. We used the 2014a version to run it. 
 (b) Standard compiler dependencies are there for running the FMP Code. 
@@ -89,9 +90,9 @@ publisher={Oxford Univ Press}
 (e) The paths to the datasets and the other relative paths should also be clear from main.m. 
 (f) One might get errors owing to the getFiles function dependent on the platform one is running on. There are subtle differences for Mac, Windows and Linux. Please make changes in the first line of the file accordingly.
 
-.........................................
-THINGS CURRENTLY BEING WORKED ON 
-.........................................
+=================================================================================================
+THINGS BEING WORKED ON 
+
 
 (A) MORE CONFIGURATION VARIABLES - The code currently runs both the optical flow and streak flow for the videos. The future releases shall contain a configuration variable which can help to decide whether to do only optical flow, only streak flow, or both.
 
@@ -105,10 +106,11 @@ THINGS CURRENTLY BEING WORKED ON
 
 (F) MORE ROBUSTNESS - The Part Tracking Code currently in place is not very robust. We are working to make it more robust, which should then hopefully yield even better results. An enhanced version of the tracking code will be available in future releases.
 
+========================================================================================================================
 The release contains the critical portions of the code as outlined in points (1-6). The missing pieces as mentioned in (A-F) are fairly straightforward to reproduce from the paper, and can be coded easily. We shall however, make these missing pieces available as soon as possible with future releases.
  
------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
 In case of any queries, please feel free to email ss965@cam.ac.uk or sukritshankar@gmail.com.  We shall strive our best to make the software amenable and useful for your cause. 
-------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
 
 
