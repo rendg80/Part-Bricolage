@@ -12,7 +12,10 @@ In the spirit of reproducible research, this package is intended to contain the 
   publisher={Springer}
 }
 
-The entire code is released under the GPL License. Please view the LICENSE.md file for the same. The release contains the following:
+The entire code is released under the GPL License. Please view the LICENSE.md file for the same. 
+
+=================================================================================================
+The release contains the following:
 
 (1) Files for part estimation using Poselets and FMP (Flexible Mixture of Parts) - For the full model, you will require to use both of them. Thus, following citations should be added:
 
