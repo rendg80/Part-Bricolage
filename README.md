@@ -15,7 +15,7 @@ In the spirit of reproducible research, this package is intended to contain the 
 The code is released under the GPL License. Please view the LICENSE.md file for the same. 
  
 ---------------------------------------------------------------------------------------------------------------------------
-In case of any queries, please feel free to email ss965@cam.ac.uk. We shall strive our best to make the software amenable and useful for your cause. 
+In case of any queries, please feel free to email ss965@cam.ac.uk or sukritshankar@gmail.com.  We shall strive our best to make the software amenable and useful for your cause. 
 ---------------------------------------------------------------------------------------------------------------------------
 
 
