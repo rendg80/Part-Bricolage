@@ -1,6 +1,5 @@
 # -----------------------------------------------------------------------------------------------------
 # This is the MAIN file for solving MWCS or PCST through Heinz (later than 2012 versions) code. 
-# Author: Sukrit Shankar
 # -----------------------------------------------------------------------------------------------------
 
 # Importing essential packages
@@ -14,7 +13,7 @@ def refineHeinzOutput (strFile):
 
 	str = fid.readlines(); 
 	
-	startLabelLine = 6; 
+	startLabelLine = 9; 
 	k = startLabelLine;  # Labelling starts at 6th line in the Heinz output file 
 	while str[k][1:21] != 'label="Total weight:':
 		k =  k + 1;      
@@ -52,7 +51,7 @@ def refineHeinzOutput (strFile):
 
 # ----------------------------------------------------------------------------------------------------
 # Set the config variable for solving PCST (=1) or MWCS (=0)
-configVar = 0;
+configVar = 0; # By default, we run MWCS
 
 if (sys.argv[1] == '-ptype'):
 	if (sys.argv[2] == '1'):
@@ -70,7 +69,7 @@ if (configVar == 1): # PCST
 # Run the Heinz code for the MWCS problem, and store the output in a text file (with proper node names) 
 # Can incorporate Error Checks in the following 
 if (configVar == 0): 
-	os.system('./heinz-mc' + ' ' + sys.argv[3] + ' ' + sys.argv[4] + ' ' + sys.argv[5] + ' ' + sys.argv[6] + '>> tempFile.txt');
+	os.system('./heinz' + ' ' + sys.argv[3] + ' ' + sys.argv[4] + ' ' + sys.argv[5] + ' ' + sys.argv[6] + '>> tempFile.txt');
 	refineHeinzOutput (sys.argv[4]); 
 	 
 
@@ -111,7 +110,7 @@ if (configVar == 1):
 	fid_2.close();
 
 	# Run Heinz 
-	os.system('./heinz-mc' + ' ' + sys.argv[3] + ' ' + 'graph_connections_temp.txt' + ' ' + sys.argv[5] + ' ' + 'graph_node_weights_temp.txt' + '>> tempFile.txt');
+	os.system('./heinz' + ' ' + sys.argv[3] + ' ' + 'graph_connections_temp.txt' + ' ' + sys.argv[5] + ' ' + 'graph_node_weights_temp.txt' + '>> tempFile.txt');
 	refineHeinzOutput ('graph_connections_temp.txt');
 	
 	# Reomve Temp files 
@@ -126,34 +125,40 @@ if (configVar == 1):
 	# Get the final weight 
 	str_f = f.readlines()
 	weightOfOptimalSubgraph = str_f[len(str_f)-1]; 
-	
-	for i in range(0,len(str_f)-1,2): 
+	 
+	for i in range(0,len(str_f)-1): 
 
 		nodes = str_f[i].split('--'); 
 		startNode = nodes[0][0:len(nodes[0])]; 
 		startNodeSplit = startNode.split('('); 
 		endNode = nodes[1][1:len(nodes[1])-1];
-		endNodeSplit = endNode.split('(');  
+		endNodeSplit = endNode.split('(');   
   
 		if (int(startNodeSplit[0]) >= newNodesStartNumber):
 			node_1 = int(endNodeSplit[0]);  
+			node_aux = int(startNodeSplit[0]);
 		if (int(endNodeSplit[0]) >= newNodesStartNumber):
 			node_1 = int(startNodeSplit[0]); 
+			node_aux = int(endNodeSplit[0]);
+		 
+		# Parse the connection to the above - Can be anywhere 
+		for j in range(i+1,len(str_f)-1): 
+			nodes = str_f[j].split('--'); 
+			startNode = nodes[0][0:len(nodes[0])]; 
+			startNodeSplit = startNode.split('('); 
+			endNode = nodes[1][1:len(nodes[1])-1];
+			endNodeSplit = endNode.split('(');   
+	  
+			if (int(startNodeSplit[0]) >= newNodesStartNumber):
+				node_2 = int(endNodeSplit[0]);  
+				node_aux_match = int(startNodeSplit[0]);
+			if (int(endNodeSplit[0]) >= newNodesStartNumber):
+				node_2 = int(startNodeSplit[0]); 
+				node_aux_match = int(endNodeSplit[0]);
 
-		# Parse the next line - The edge will be present in consecutive lines 
-		nodes = str_f[i+1].split('--'); 
-		startNode = nodes[0][0:len(nodes[0])]; 
-		startNodeSplit = startNode.split('('); 
-		endNode = nodes[1][1:len(nodes[1])-1];
-		endNodeSplit = endNode.split('(');  
-  
-		if (int(startNodeSplit[0]) >= newNodesStartNumber):
-			node_2 = int(endNodeSplit[0]);  
-		if (int(endNodeSplit[0]) >= newNodesStartNumber):
-			node_2 = int(startNodeSplit[0]); 
-
-		# Write the optimal subgraph connection in the final file 
-		fid.write(str(node_1) + '(' + str(node_1) + ')' + ' -- ' + str(node_2) +  '(' + str(node_2) + ')\n'); 
+			# Write the connection in the final file in case aux node matches
+			if (node_aux == node_aux_match): 
+				fid.write(str(node_1) + '(' + str(node_1) + ')' + ' -- ' + str(node_2) +  '(' + str(node_2) + ')\n'); 
 
 
 	# Write the final weight 
@@ -163,10 +168,3 @@ if (configVar == 1):
 
 	# Remove the temp Heinz Generated file 
 	os.remove('graph_connections_temp.txt' + '_outputGraph.txt');
-
-
-
-	 
-	
-
-
