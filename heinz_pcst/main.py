@@ -1,5 +1,6 @@
 # -----------------------------------------------------------------------------------------------------
 # This is the MAIN file for solving MWCS or PCST through Heinz (later than 2012 versions) code. 
+# Author: Sukrit Shankar
 # -----------------------------------------------------------------------------------------------------
 
 # Importing essential packages
@@ -51,7 +52,7 @@ def refineHeinzOutput (strFile):
 
 # ----------------------------------------------------------------------------------------------------
 # Set the config variable for solving PCST (=1) or MWCS (=0)
-configVar = 0; # By default, we run MWCS
+configVar = 1; 
 
 if (sys.argv[1] == '-ptype'):
 	if (sys.argv[2] == '1'):
