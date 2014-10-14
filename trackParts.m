@@ -44,13 +44,26 @@ for i = range;
         x2 = x1 + parts.head_pos(s,3); 
         y2 = y1 + parts.head_pos(s,4);
         
-        % Find the median flow in the block 
+        % Find the flow in the block 
         temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
         temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-        flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+        if (configPB.typeOfTracking == 0)
+            [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+            [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+        end
+        if (configPB.typeOfTracking == 1)
+            flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        end
+        
         temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
         temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-        flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        if (configPB.typeOfTracking == 0)
+            [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+            [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+        end
+        if (configPB.typeOfTracking == 1)
+            flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        end
 
         infoTrackedParts{1,NP}.head_pos(s,1) = x1 + trackSign * flow_max_x;  
         infoTrackedParts{1,NP}.head_pos(s,2) = y1 + trackSign * flow_max_y;
@@ -77,13 +90,26 @@ for i = range;
         x2 = x1 + parts.torso_pos(s,3); 
         y2 = y1 + parts.torso_pos(s,4); 
         
-        % Find the median flow in the block 
+        % Find the flow in the block 
         temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
         temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-        flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+        if (configPB.typeOfTracking == 0)
+            [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+            [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+        end
+        if (configPB.typeOfTracking == 1)
+            flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        end
+        
         temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
         temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-        flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        if (configPB.typeOfTracking == 0)
+            [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+            [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+        end
+        if (configPB.typeOfTracking == 1)
+            flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+        end
 
         infoTrackedParts{1,NP}.torso_pos(s,1) = x1 + trackSign * flow_max_x;
         infoTrackedParts{1,NP}.torso_pos(s,2) = y1 + trackSign * flow_max_y;
@@ -112,14 +138,27 @@ for i = range;
                 x2 = x1 + parts.hand1_pos(s,4*j+3); 
                 y2 = y1 + parts.hand1_pos(s,4*j+4); 
                 
-                % Find the median flow in the block 
+                % Find the flow in the block 
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
-
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+                
                 infoTrackedParts{1,NP}.hand1_pos(s,4*j+1) = x1 + trackSign * flow_max_x;
                 infoTrackedParts{1,NP}.hand1_pos(s,4*j+2) = y1 + trackSign * flow_max_y;
                 infoTrackedParts{1,NP}.hand1_pos(s,4*j+1) = max (1,infoTrackedParts{1,NP}.hand1_pos(s,4*j+1)); 
@@ -151,14 +190,27 @@ for i = range;
                 x2 = x1 + parts.hand2_pos(s,4*j+3); 
                 y2 = y1 + parts.hand2_pos(s,4*j+4); 
                 
-                % Find the median flow in the block 
+                % Find the flow in the block 
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
-        
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+
                 infoTrackedParts{1,NP}.hand2_pos(s,4*j+1) = x1 + trackSign * flow_max_x;   
                 infoTrackedParts{1,NP}.hand2_pos(s,4*j+2) = y1 + trackSign * flow_max_y;
                 infoTrackedParts{1,NP}.hand2_pos(s,4*j+1) = max (1,infoTrackedParts{1,NP}.hand2_pos(s,4*j+1)); 
@@ -190,13 +242,26 @@ for i = range;
                 x2 = x1 + parts.leg1_pos(s,4*j+3); 
                 y2 = y1 + parts.leg1_pos(s,4*j+4); 
                 
-                % Find the median flow in the block 
+                % Find the flow in the block 
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
 
                 infoTrackedParts{1,NP}.leg1_pos(s,4*j+1) = x1 + trackSign * flow_max_x;  
                 infoTrackedParts{1,NP}.leg1_pos(s,4*j+2) = y1 + trackSign * flow_max_y;
@@ -229,13 +294,26 @@ for i = range;
                 x2 = x1 + parts.leg2_pos(s,4*j+3); 
                 y2 = y1 + parts.leg2_pos(s,4*j+4); 
                 
-                % Find the median flow in the block 
+                % Find the flow in the block 
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),1,i);
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array; 
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_x = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_x = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
+
                 temp_ss_flow = flow_init(floor(y1):floor(y2),floor(x1):floor(x2),2,i); 
                 temp_ss_flow_array = reshape (temp_ss_flow,[1,size(temp_ss_flow,1) * size(temp_ss_flow,2)]); 
-                flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                if (configPB.typeOfTracking == 0)
+                    [nss,xss] = hist (temp_ss_flow_array,configPB.histBinSize); 
+                    [qss, yss] = max (nss); flow_max_y = xss(yss); clear temp_ss_flow temp_ss_flow_array nss xss qss yss; 
+                end
+                if (configPB.typeOfTracking == 1)
+                    flow_max_y = median (temp_ss_flow_array); clear temp_ss_flow temp_ss_flow_array;
+                end
 
                 infoTrackedParts{1,NP}.leg2_pos(s,4*j+1) = x1 + trackSign * flow_max_x;
                 infoTrackedParts{1,NP}.leg2_pos(s,4*j+2) = y1 + trackSign * flow_max_y;
