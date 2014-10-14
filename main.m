@@ -360,6 +360,7 @@ if (configPB.utilizeFlow == 1)
             dirList = dir; numFrames = size(dirList,1) - 2; clear dirList; 
             
             % Do all with the flow and return the variables
+            generateDescriptors (numFrames,subFolderNames{i,1});		
             
             % Save the returned variables
                     
@@ -374,7 +375,7 @@ if (configPB.utilizeFlow == 1)
     if (configPB.dataset == 2)
         mainPath = '../datasets/action-detection-dataset/msr/'; 
         [subFolderNames,numberOfsubfolders] = getFiles(strcat(mainPath,'/videos'),''); % Extract sub Folder names
-        for i = 3:1:3 %numberOfsubfolders  % Neglect first two folder names since they indicate navigation
+        for i = 3:1:numberOfsubfolders  % Neglect first two folder names since they indicate navigation
             folderPath = strcat(mainPath,'/videos/',subFolderNames{i,1}); 
             cd(folderPath); % Go to the folder of the video 
             dirList = dir; numFrames = size(dirList,1) - 2; clear dirList; 
@@ -389,12 +390,3 @@ if (configPB.utilizeFlow == 1)
         end % End for the subfolder 
     end  
 end  % End for the config Variable If for Utilizing Flow 
-
-
-
-
-
-
-
-
-
