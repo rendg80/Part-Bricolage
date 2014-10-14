@@ -21,6 +21,7 @@ configPB = loadConfiguration();
 MSRTrainSet_runPartDetectors = 1; 
 MSRTrainSet_runFlow = 1; 
 MSRTrainSet_resolvePartDetectionAmbiguity = 1; 
+MSRTrainSet_utilizeFlow = 1; 
 
 % Decalre the Category Names
 categoryNames  = cell (1,3); 
@@ -195,6 +196,29 @@ if (MSRTrainSet_resolvePartDetectionAmbiguity == 1)
     end 
 end
 
+% -----------------------------------------------
+% Run Utilize Everything from Flow on the MSR Training Set 
+if (MSRTrainSet_utilizeFlow == 1)
+    for k = 1:1:3
+        mainPath = '../datasets/MSR-training-set/'; 
+        [subFolderNames,numberOfsubfolders] = getFiles(strcat(mainPath,categoryNames{1,k}),''); % Extract sub Folder names
+            
+        for i = 3:1:numberOfsubfolders  % Neglect first two folder names since they indicate navigation
+           
+            folderPath = strcat(mainPath,categoryNames{1,k},'/',subFolderNames{i,1}); 
+            cd(folderPath); % Go to the folder of the video 
+            dirList = dir; numFrames = size(dirList,1) - 2; clear dirList; 
+            
+            % Do all with the flow and return the variables
+            generateDescriptors (numFrames,subFolderNames{i,1}); 
+            
+            % Save the returned variables
+                    
+            % Clear variables and change the folder 
+            cd ('../../../../code');
+        end % End for the subfolder 
+    end  
+end
 
 
 
