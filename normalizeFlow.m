@@ -38,13 +38,27 @@ maxrad = max(maxrad, max(rad(:)));
 
 % fprintf('max flow: %.4f flow range: u = %.3f .. %.3f; v = %.3f .. %.3f\n', maxrad, minu, maxu, minv, maxv);
 
-if isempty(varargin) ==0
-    maxFlow = varargin{1};
+if (nargin == 3)
+    maxFlow = varargin{2};
     if maxFlow > 0
         maxrad = maxFlow;
     end;       
-end;
+end
 
-u = u/(maxrad+eps).*rad;
-v = v/(maxrad+eps).*rad;
+if (nargin == 2)
+    fullNormalizeFlag = varargin{1}; % 1 = Full Normalize, 0 = Partial Normalize
+end
+if (nargin == 1)
+    fullNormalizeFlag = 0; % Default 
+end
+
+if (fullNormalizeFlag == 1)
+    u = u/(maxrad+eps);
+    v = v/(maxrad+eps);
+end
+
+if (fullNormalizeFlag == 0)
+    u = u/(maxrad+eps).*rad;
+    v = v/(maxrad+eps).*rad;
+end
 
